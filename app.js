@@ -38,7 +38,7 @@ const getLatLongData = () => {
             parsedData = body;
             // console.log(parsedData);
     
-            console.log(`Location: ${body.features[0].place_name}, Latitude: ${body.features[0].center[0]} Longitude: ${body.features[0].center[1]}`);
+            console.log(`Location: ${body.features[0].place_name}, Latitude: ${body.features[0].center[1]} Longitude: ${body.features[0].center[0]}`);
         } 
     });
 }
