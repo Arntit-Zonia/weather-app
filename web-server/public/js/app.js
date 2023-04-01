@@ -1,8 +1,6 @@
 const getWeatherData = async (address) => {
   try {
-    const { data } = await axios.get(
-      `http://localhost:3000/weather?address=${address}`
-    );
+    const { data } = await axios.get(`/weather?address=${address}`);
 
     console.log(data);
 
@@ -31,7 +29,7 @@ const handleFormSubmit = () => {
     if (!search.value) return;
 
     renderValueToDom(".error-message", "");
-    
+
     loadingElm.textContent = "Loading...";
 
     const {
@@ -42,9 +40,9 @@ const handleFormSubmit = () => {
     } = await getWeatherData(search.value);
 
     loadingElm.textContent = "";
-    
+
     if (error) renderValueToDom(".error-message", error);
-    
+
     renderValueToDom(".forecast", forecast);
     renderValueToDom(".location", locationData?.location);
     renderValueToDom(".address", address);
