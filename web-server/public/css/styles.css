@@ -43,3 +43,7 @@ h1 {
 .main-container {
   flex-grow: 1;
 }
+
+.location-form {
+  margin-bottom: 16px;
+}
