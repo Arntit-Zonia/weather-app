@@ -4,7 +4,7 @@ const getTemperature  = (location, callback) => {
     const url = `http://api.weatherstack.com/current?access_key=45ee8c7f72cb0559e8512198e9458efe&query=${encodeURIComponent(location)}&unit=m`;
 
     request({ url, json: true }, (error, response, body) => {
-        const { error: bodyError, location: {name}, current: {temperature, feelslike} } = body;
+        const { error: bodyError, location, current } = body;
         const { statusCode } = response;
 
         if (error) callback(`Error message: ${error}`);
@@ -12,9 +12,7 @@ const getTemperature  = (location, callback) => {
         if (bodyError) callback("Could not find location!");
 
         if (statusCode == 200 && !bodyError) {
-            // console.log(`The current temperature in ${body.location.name} is ${body.current.temperature} and it feels like it's ${body.current.feelslike}`);
-
-            callback("", `The current temperature in ${name} is ${temperature} and it feels like it's ${feelslike}`);
+            callback("", `The current temperature in ${location?.name} is ${current?.temperature} and it feels like it's ${current?.feelslike}`);
         }
     });
 }
